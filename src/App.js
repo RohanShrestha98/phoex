@@ -13,6 +13,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./FirebaseConfig";
 import ProductCatagory from "./MyComponents/UserComponents/ProductCatagory";
 import Login from "./MyComponents/UserComponents/Login";
+import CartPage from "./MyComponents/UserComponents/CartPage";
 
 function App() {
   const [data, setData] = useState([]);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/addpost" element={<AddPost />} />
         <Route path="/addhomeslider" element={<AddHomeSlider />} />
+        <Route path="/yourcart" element={<CartPage />} />
         <Route path="/addflashsale" element={<AddFlashSale />} />
         <Route path="/fetchpost" element={<FetchPost />} />
         {data.map((items) => (

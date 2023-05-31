@@ -64,7 +64,9 @@ useEffect(() => {
   }
 }, [localStorage.getItem("myCart")]);
 
-
+const handleScrollToTop = () => {
+  window.scrollTo(0, 0);
+};
   return (
     <>
     {
@@ -77,12 +79,23 @@ useEffect(() => {
 {
       cartbar &&  
       <div className='cartBar'>
-        <p  onClick={()=>setCartBar(false)} >Cross</p>
+        <div className='cartBarHeading'>
+          <h1>Your Cart</h1>
+          <Link to="/yourcart" className='viewall'>View All <i class="fa-solid fa-angle-right"></i></Link>
+          
+        </div>
+        {/* <p  onClick={()=>setCartBar(false)} >Cross</p> */}
         {
           cartLocalStorage && cartLocalStorage.map((items)=>(
-            <div>
-              {items.desc}
-            </div>
+            <Link to={`/${items.category}/${items.id}`} onClick={handleScrollToTop} className='cartBarOne'>
+              <div className='cartBarOneImg'>
+              <img src={items.img} alt="" />
+              </div>
+              <div className='cartBarOneDesc'>
+              <p>{items.desc}</p> 
+              </div>
+             
+            </Link>
           ))
         }
       </div>

@@ -4,7 +4,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../FirebaseConfig";
 import { Link } from "react-router-dom";
 
-export default function ForYouProduct() {
+export default function ForYouProduct(props) {
 
     const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,13 +39,13 @@ export default function ForYouProduct() {
         <h3>Our Products <span>Just For You</span> </h3>
       </div>
       <div className="flashsale">
-        {data.map((items) =>{
+        {data.slice(0,props.display).map((items) =>{
           const markedprice = Math.floor(parseInt(items.price) - 0.14 * parseInt(items.price));
           const discountamount = Math.floor(items.price - markedprice)
           return (
             <Link
               key={items.id}
-              to={`${items.category}/${items.id}`}
+              to={`/${items.category}/${items.id}`}
               className="flashsaleone" onClick={handleScrollToTop}
             >
               <div className="flashsaleimg">

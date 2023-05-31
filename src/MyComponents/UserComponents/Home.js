@@ -43,7 +43,7 @@ export default function Home() {
       <HomeSlider data={data} loading={loading}/>
       <FlashSale/>
       <TopCatagory/>
-      <ForYouProduct/>
+      <ForYouProduct display={"10"}/>
     </div>
   )
 }

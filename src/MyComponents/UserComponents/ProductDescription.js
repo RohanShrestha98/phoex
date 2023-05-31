@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../FirebaseConfig";
 import Login from "./Login";
+import ForYouProduct from "./ForYouProduct";
 
 export default function ProductDescription(props) {
   
@@ -28,14 +29,31 @@ export default function ProductDescription(props) {
   const addtoCart = () => {
     const storedCartData = localStorage.getItem("myCart");
     const existingCartData = storedCartData ? JSON.parse(storedCartData) : [];
-    const updatedCart = Array.isArray(existingCartData)
-      ? [...existingCartData, props.data]
-      : [props.data];
-
+    const updatedCart = Array.isArray(existingCartData) ? [...existingCartData, props.data] : [props.data];
+  
     const updatedCartData = JSON.stringify(updatedCart);
     localStorage.setItem("myCart", updatedCartData);
+    setAddCart("Remove from Cart"); // Update addcart state
     console.log("addtoCart", updatedCartData);
   };
+  
+
+  const deleteFromCart = () => {
+    const storedCartData = localStorage.getItem("myCart");
+    const existingCartData = storedCartData ? JSON.parse(storedCartData) : [];
+  
+    const itemIndex = existingCartData.findIndex((item) => item.id === props.data.id);
+    if (itemIndex !== -1) {
+      existingCartData.splice(itemIndex, 1);
+    }
+  
+    const updatedCartData = JSON.stringify(existingCartData);
+    localStorage.setItem("myCart", updatedCartData);
+    setAddCart("Add to Cart"); // Update addcart state
+    console.log("deleteFromCart", updatedCartData);
+  };
+  
+  
 
   const [data, setData] = useState([]);
 
@@ -180,6 +198,31 @@ export default function ProductDescription(props) {
       });
   };
 
+  const [cartLocalStorage,setCartLocalStorage] = useState()
+useEffect(() => {
+  const storedCartData = localStorage.getItem("myCart");
+  if (storedCartData) {
+    const parsedCartData = JSON.parse(storedCartData);
+    setCartLocalStorage(parsedCartData);
+  }
+}, [localStorage.getItem("myCart")]);
+
+console.log("cartLocalStorage",cartLocalStorage)
+
+  const [addcart,setAddCart] = useState("Add to Cart")
+  
+  useEffect(() => {
+    cartLocalStorage && cartLocalStorage.map((item) => {
+      if (item.id === props.data.id) {
+        setAddCart("Remove from Cart");
+      } else {
+        setAddCart("Add to Cart");
+      }
+      return null; 
+    });
+  }, [props.data.id, cartLocalStorage]);
+  
+
   return (
     <>
       <Header />
@@ -294,7 +337,8 @@ export default function ProductDescription(props) {
                 {
                   !user && <Login data={props.data} setUser={setUser}/> 
                 }
-                <button onClick={addtoCart}>Add to Cart</button>
+               <button onClick={addcart === "Add to Cart" ? addtoCart : () => deleteFromCart(props.data)}>{addcart}</button>
+
               </div>
 
               {/* <p>{formattedDate}</p>
@@ -365,6 +409,7 @@ export default function ProductDescription(props) {
           </div>
         </div>
       </div>
+      <ForYouProduct display={"10"}/>
     </>
   );
 }

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "./FirebaseConfig";
 import ProductCatagory from "./MyComponents/UserComponents/ProductCatagory";
+import Login from "./MyComponents/UserComponents/Login";
 
 function App() {
   const [data, setData] = useState([]);
@@ -43,6 +44,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/addpost" element={<AddPost />} />
         <Route path="/addhomeslider" element={<AddHomeSlider />} />
         <Route path="/addflashsale" element={<AddFlashSale />} />

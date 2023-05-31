@@ -4,31 +4,9 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../FirebaseConfig";
 import { Link } from "react-router-dom";
 
-export default function FlashSale() {
-  const initialCountdown = localStorage.getItem('countdown') || 12 * 60 * 60; 
-const [countdown, setCountdown] = useState(initialCountdown);
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCountdown((prevCountdown) => {
-      if (prevCountdown === 0) {
-        return initialCountdown;
-      } else {
-        return prevCountdown - 1;
-      }
-    });
-  }, 1000);
+export default function ForYouProduct() {
 
-  return () => {
-    clearInterval(interval);
-    localStorage.setItem('countdown', countdown); 
-  };
-}, [initialCountdown]);
-
-  const hours = Math.floor(countdown / 3600);
-  const minutes = Math.floor((countdown % 3600) / 60);
-  const seconds = countdown % 60;
-
-  const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -55,20 +33,13 @@ useEffect(() => {
   const handleScrollToTop = () => {
     window.scrollTo(0, 0);
   };
-
   return (
-    <>
-      <div className="flashsaleheading">
-        <h3>Sale for the Day</h3>
-        <h1>Flash Sale</h1>
-        <div>
-          {hours.toString().padStart(2, "0")}:
-          {minutes.toString().padStart(2, "0")}:
-          {seconds.toString().padStart(2, "0")}
-        </div>
+    <div>
+       <div className='topcatagories'>
+        <h3>Our Products <span>Just For You</span> </h3>
       </div>
       <div className="flashsale">
-        {data.slice(0,5).map((items) =>{
+        {data.map((items) =>{
           const markedprice = Math.floor(parseInt(items.price) - 0.14 * parseInt(items.price));
           const discountamount = Math.floor(items.price - markedprice)
           return (
@@ -90,6 +61,7 @@ useEffect(() => {
           )
         })}
       </div>
-    </>
-  );
+      
+    </div>
+  )
 }

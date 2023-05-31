@@ -55,6 +55,16 @@ const navigation = [
   }
 ]
 
+const [cartLocalStorage,setCartLocalStorage] = useState()
+useEffect(() => {
+  const storedCartData = localStorage.getItem("myCart");
+  if (storedCartData) {
+    const parsedCartData = JSON.parse(storedCartData);
+    setCartLocalStorage(parsedCartData);
+  }
+}, [localStorage.getItem("myCart")]);
+
+
   return (
     <>
     {
@@ -68,6 +78,13 @@ const navigation = [
       cartbar &&  
       <div className='cartBar'>
         <p  onClick={()=>setCartBar(false)} >Cross</p>
+        {
+          cartLocalStorage && cartLocalStorage.map((items)=>(
+            <div>
+              {items.desc}
+            </div>
+          ))
+        }
       </div>
     }
    

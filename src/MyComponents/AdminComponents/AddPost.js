@@ -17,9 +17,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import "./style.css";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from 'uuid';
+import "./style.css"
 
 export default function AddPost() {
   const [file, setFile] = useState("");
+  const [file2, setFile2] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
   const [colors, setColors] = useState(["#000000", "#FFFFFF"]);
@@ -88,6 +90,44 @@ export default function AddPost() {
     };
     file && uploadFile();
   }, [file]);
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = new Date().getTime() + file2.name;
+
+      console.log(name);
+      const storageRef = ref(storage, file2.name);
+      const uploadTask = uploadBytesResumable(storageRef, file2);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          setPerc(progress);
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setData((prev) => ({ ...prev, img2: downloadURL }));
+          });
+        }
+      );
+    };
+    file2 && uploadFile();
+  }, [file2]);
 
   console.log(data);
 
@@ -157,6 +197,25 @@ export default function AddPost() {
               />
             </div>
           </div>
+          <div className="fileImg2">
+            <img style={{width:"100px"}}
+              src={
+                file2
+                  ? URL.createObjectURL(file2)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt=""
+            />
+            <div className="formInput">
+              <label htmlFor="file2">Upload post</label>
+              <input
+                type="file"
+                id="file2"
+                onChange={(e) => setFile2(e.target.files[0])}
+                style={{ display: "none" }}
+              />
+            </div>
+          </div>
           <div className="input">
             <p>
               Name with description<span>*</span>
@@ -181,104 +240,169 @@ export default function AddPost() {
           </div>
           <div className="input">
             <p>
-              Quantity<span>*</span>
+              RAM<span>*</span>
             </p>
             <input
-              id="quantity"
+              id="ramdesc"
               type="text"
-              placeholder="quantity"
+              placeholder="RAM"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              2 GB & 32 GB<span>*</span>
+              ROM<span>*</span>
             </p>
             <input
-              id="twothirtytwo"
+              id="romdesc"
               type="text"
-              placeholder="2 GB & 32 GB"
+              placeholder="ROM"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              3 GB & 32 GB<span>*</span>
+              Display<span>*</span>
             </p>
             <input
-              id="threethirtytwo"
+              id="display"
               type="text"
-              placeholder="3 GB & 32 GB"
+              placeholder="Display"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              3 GB & 64 GB<span>*</span>
+              Refresh Rate<span>*</span>
             </p>
             <input
-              id="threesixtyfour"
+              id="refreshrate"
               type="text"
-              placeholder="3 GB & 64 GB"
+              placeholder="Refresh Rate"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              4 GB & 32 GB<span>*</span>
+              Processer<span>*</span>
             </p>
             <input
-              id="fourthirtytwo"
+              id="processer"
               type="text"
-              placeholder="4 GB & 32 GB"
+              placeholder="Processer"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              4 GB & 64 GB<span>*</span>
+              Rare Camera <span>*</span>
             </p>
             <input
-              id="foursixtyfour"
+              id="rarecamera"
               type="text"
-              placeholder="4 GB & 64 GB"
+              placeholder="Rare Camera"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              6 GB & 64 GB<span>*</span>
+              Rare Camera Video<span>*</span>
             </p>
             <input
-              id="sixsixtyfour"
+              id="rarecameravideo"
               type="text"
-              placeholder="6 GB & 64 GB"
+              placeholder="Rare Camera Video"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              6 GB & 128 GB<span>*</span>
+              Front Camera <span>*</span>
             </p>
             <input
-              id="sixonehundredtwentyeight"
+              id="frontcamera"
               type="text"
-              placeholder="6 GB & 128 GB"
+              placeholder="Front Camera"
               onChange={handleInput}
             />
           </div>
           <div className="input">
             <p>
-              8 GB & 128 GB<span>*</span>
+              Front Camera Video<span>*</span>
             </p>
             <input
-              id="eightonehundredtwentyeight"
+              id="frontcameravideo"
               type="text"
-              placeholder="8 GB & 128 GB"
+              placeholder="Rare Camera Video"
               onChange={handleInput}
             />
           </div>
-
+          <div className="input">
+            <p>
+              Battery<span>*</span>
+            </p>
+            <input
+              id="battery"
+              type="text"
+              placeholder="Battery"
+              onChange={handleInput}
+            />
+          </div>
+          <div className="input">
+            <p>
+              Security Patten<span>*</span>
+            </p>
+            <input
+              id="securitypatten"
+              type="text"
+              placeholder="Battery"
+              onChange={handleInput}
+            />
+          </div>
+          <div className="input">
+            <p>
+              CPU<span>*</span>
+            </p>
+            <input
+              id="cpu"
+              type="text"
+              placeholder="CPU"
+              onChange={handleInput}
+            />
+          </div>
+          <div className="input">
+            <p>
+              GPU<span>*</span>
+            </p>
+            <input
+              id="gpu"
+              type="text"
+              placeholder="GPU"
+              onChange={handleInput}
+            />
+          </div>
+          <div className="input">
+            <p>
+              Charging<span>*</span>
+            </p>
+            <input
+              id="charging"
+              type="text"
+              placeholder="Charging"
+              onChange={handleInput}
+            />
+          </div>
+          <div className="input">
+            <p>
+              Chipset<span>*</span>
+            </p>
+            <input
+              id="chipset"
+              type="text"
+              placeholder="Chipset"
+              onChange={handleInput}
+            />
+          </div>
           <div>
       <h2>My Colors</h2>
       <ul>

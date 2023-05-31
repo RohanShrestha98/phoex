@@ -1,10 +1,11 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { db } from '../../FirebaseConfig';
 import Header from "./Header"
 
 export default function ProductCatagory() {
+  window.scrollTo(0,0)
     const [data, setData] = useState([]);
     const location = useLocation()
     const [loading, setLoading] = useState(true);
@@ -50,6 +51,15 @@ export default function ProductCatagory() {
   return (
     <div>
       <Header/>
+      <div className="systemNavigation">
+        <Link className="systemnavigationone" to="/">
+          Home
+        </Link>{" "}
+        <i class="fa-solid fa-angle-right"></i>
+        <Link className="systemnavigationone" to={`/${data.category}`}>
+          {data.category}
+        </Link>
+      </div>
       {
        data.map((items)=>(
             <div key={items.id}>

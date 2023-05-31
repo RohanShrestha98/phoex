@@ -5,6 +5,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import FlashSale from './FlashSale';
 import { db } from '../../FirebaseConfig';
 import TopCatagory from './TopCatagory';
+import ForYouProduct from './ForYouProduct';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -42,6 +43,7 @@ export default function Home() {
       <HomeSlider data={data} loading={loading}/>
       <FlashSale/>
       <TopCatagory/>
+      <ForYouProduct/>
     </div>
   )
 }

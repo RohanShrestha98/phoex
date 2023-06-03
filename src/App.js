@@ -14,6 +14,7 @@ import { db } from "./FirebaseConfig";
 import ProductCatagory from "./MyComponents/UserComponents/ProductCatagory";
 import Login from "./MyComponents/UserComponents/Login";
 import CartPage from "./MyComponents/UserComponents/CartPage";
+import OrderedPage from "./MyComponents/UserComponents/OrderedPage";
 
 function App() {
   const [data, setData] = useState([]);
@@ -40,7 +41,6 @@ function App() {
   }, []);
 
  
- console.log("data.catagory",data.category)
   return (
     <Router>
       <Routes>
@@ -49,6 +49,7 @@ function App() {
         <Route path="/addpost" element={<AddPost />} />
         <Route path="/addhomeslider" element={<AddHomeSlider />} />
         <Route path="/yourcart" element={<CartPage />} />
+        <Route path="/yourorder" element={<OrderedPage />} />
         <Route path="/addflashsale" element={<AddFlashSale />} />
         <Route path="/fetchpost" element={<FetchPost />} />
         {data.map((items) => (

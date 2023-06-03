@@ -29,7 +29,10 @@ export default function ProductDescription(props) {
   const addtoCart = () => {
     const storedCartData = localStorage.getItem("myCart");
     const existingCartData = storedCartData ? JSON.parse(storedCartData) : [];
-    const updatedCart = Array.isArray(existingCartData) ? [...existingCartData, props.data] : [props.data];
+    const updatedCart = Array.isArray(existingCartData)
+  ? [...existingCartData, { ...props.data, quantity: quantity }]
+  : [{ ...props.data, quantity: quantity ,checked:false }];
+
   
     const updatedCartData = JSON.stringify(updatedCart);
     localStorage.setItem("myCart", updatedCartData);
@@ -333,10 +336,7 @@ console.log("cartLocalStorage",cartLocalStorage)
               </div>
 
               <div className="BuyAddCart">
-                <button onClick={()=>setUser(false)}>Buy Now</button>
-                {
-                  !user && <Login data={props.data} setUser={setUser}/> 
-                }
+                <button >Buy Now</button>
                <button onClick={addcart === "Add to Cart" ? addtoCart : () => deleteFromCart(props.data)}>{addcart}</button>
 
               </div>

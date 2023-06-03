@@ -21,7 +21,6 @@ export default function Login(props) {
               info: props.data,
               timeStamp: serverTimestamp(),
             });
-            console.log("Data Info:",props.data)
             props.setUser(true)
             toast.success("Post Added Successfully")
           } catch (err) {

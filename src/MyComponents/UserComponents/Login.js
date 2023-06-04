@@ -19,6 +19,7 @@ export default function Login(props) {
             await setDoc(doc(db,"buynow",id), {
               ...data,
               info: props.data,
+              status : "pending",
               timeStamp: serverTimestamp(),
             });
             props.setUser(true)

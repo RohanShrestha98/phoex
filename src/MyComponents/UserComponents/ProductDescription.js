@@ -79,7 +79,7 @@ export default function ProductDescription(props) {
     return () => {
       unsub();
     };
-  }, []);
+  }, [props.data.category]);
 
   console.log(data);
 

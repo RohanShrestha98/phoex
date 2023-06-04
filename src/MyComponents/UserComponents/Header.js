@@ -106,7 +106,7 @@ const handleScrollToTop = () => {
         </div>
         <div className='toptrackingcontent'>
         <Link className='toptrackingone'><img src="/icons/Profile.png" alt="" /> Become DropShipper </Link>
-        <Link className='toptrackingone'><img src="/icons/track.png" alt="" /> Track Your Order</Link>
+        <Link to="/trackorder" className='toptrackingone'><img src="/icons/track.png" alt="" /> Track Your Order</Link>
         <Link className='toptrackingone'><img src="/icons/Discount.png" alt="" /> All Offers</Link>
         </div>
         

@@ -15,6 +15,8 @@ import ProductCatagory from "./MyComponents/UserComponents/ProductCatagory";
 import Login from "./MyComponents/UserComponents/Login";
 import CartPage from "./MyComponents/UserComponents/CartPage";
 import OrderedPage from "./MyComponents/UserComponents/OrderedPage";
+import TrackOrder from "./MyComponents/UserComponents/TrackOrder";
+import PlacedOrder from "./MyComponents/AdminComponents/PLacedOrder";
 
 function App() {
   const [data, setData] = useState([]);
@@ -50,6 +52,8 @@ function App() {
         <Route path="/addhomeslider" element={<AddHomeSlider />} />
         <Route path="/yourcart" element={<CartPage />} />
         <Route path="/yourorder" element={<OrderedPage />} />
+        <Route path="/trackorder" element={<TrackOrder />} />
+        <Route path="/placedorder" element={<PlacedOrder />} />
         <Route path="/addflashsale" element={<AddFlashSale />} />
         <Route path="/fetchpost" element={<FetchPost />} />
         {data.map((items) => (

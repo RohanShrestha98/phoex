@@ -31,8 +31,8 @@ export default function AddPost() {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [clicked, setClicked] = useState(false);
 
-  const brand = ["Samsung", "Iphone", "Realme","Readme","Vivo"];
-  const catagory = ["Budget SmartPhones", "Free Shipping", "Samsung","Iphone","Vivo","Oneplus"];
+  const brand = ["Samsung", "Iphone", "Realme","Redmi","Vivo","Oneplus"];
+  const catagory = ["Budget SmartPhones", "Free Shipping", "Samsung","Iphone","Vivo","Oneplus","Redmi"];
 
   const handleCategorySelect = (e) => {
     setSelectedCategory(e.target.value);

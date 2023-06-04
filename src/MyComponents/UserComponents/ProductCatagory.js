@@ -19,8 +19,8 @@ export default function ProductCatagory() {
           setCatagory("Samsung")
         }else if(location.pathname === "/Realme"){
           setCatagory("Realme")
-        }else if(location.pathname === "/Readme"){
-          setCatagory("Readme")
+        }else if(location.pathname === "/Redmi"){
+          setCatagory("Redmi")
         }else if(location.pathname === "/Vivo"){
           setCatagory("Vivo")
         }

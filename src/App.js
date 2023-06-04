@@ -16,7 +16,7 @@ import Login from "./MyComponents/UserComponents/Login";
 import CartPage from "./MyComponents/UserComponents/CartPage";
 import OrderedPage from "./MyComponents/UserComponents/OrderedPage";
 import TrackOrder from "./MyComponents/UserComponents/TrackOrder";
-import PlacedOrder from "./MyComponents/AdminComponents/PLacedOrder";
+import PlacedOrder from "./MyComponents/AdminComponents/PlacedOrder";
 
 function App() {
   const [data, setData] = useState([]);

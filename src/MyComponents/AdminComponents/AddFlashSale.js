@@ -18,7 +18,7 @@ export default function AddFlashSale() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [clicked, setClicked] = useState(false);
 
-  const categories = ["Samsung", "Iphone", "Realme","Readme","Vivo"];
+  const categories = ["Samsung", "Iphone", "Realme","Redmi","Vivo"];
 
   const handleCategorySelect = (e) => {
     setSelectedCategory(e.target.value);

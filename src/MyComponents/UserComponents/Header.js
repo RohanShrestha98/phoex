@@ -47,7 +47,7 @@ const navigation = [
   },
   {
     id:4,
-    category:"Readme"
+    category:"Redmi"
   },
   {
     id:5,

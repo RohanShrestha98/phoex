@@ -3,10 +3,10 @@ import "./style.css";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../FirebaseConfig";
 import { Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function ForYouProduct(props) {
-
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,33 +35,37 @@ export default function ForYouProduct(props) {
   };
   return (
     <div>
-       <div className='topcatagories'>
-        <h3>Our Products <span>Just For You</span> </h3>
+      <div className="topcatagories">
+        <h3>
+          Our Products <span>Just For You</span>{" "}
+        </h3>
       </div>
       <div className="flashsale">
-        {data.slice(0,props.display).map((items) =>{
-          const markedprice = Math.floor(parseInt(items.price) - 0.14 * parseInt(items.price));
-          const discountamount = Math.floor(items.price - markedprice)
+        {data.slice(0, props.display).map((items) => {
+          const markedprice = Math.floor(
+            parseInt(items.price) - 0.14 * parseInt(items.price)
+          );
+          const discountamount = Math.floor(items.price - markedprice);
           return (
             <Link
               key={items.id}
               to={`/${items.category}/${items.id}`}
-              className="flashsaleone" onClick={handleScrollToTop}
+              className="flashsaleone"
+              onClick={handleScrollToTop}
             >
               <div className="flashsaleimg">
                 <img src={items.img} alt="" />
               </div>
-              <h2>{items.desc && items.desc.slice(0,18)}</h2>
+              <h2>{items.desc && items.desc.slice(0, 18)}</h2>
               <div className="flashsaleprice">
                 <h3>Rs {markedprice}</h3>
                 <h4>Rs{items.price}</h4>
               </div>
               <h5>Save - Rs {discountamount}</h5>
             </Link>
-          )
+          );
         })}
       </div>
-      
     </div>
-  )
+  );
 }

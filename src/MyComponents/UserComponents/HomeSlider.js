@@ -33,7 +33,11 @@ export default function HomeSlider(props) {
           </div>
         ))}
 
-      {props.loading && <p> Loading.....</p>}
+      {props.loading && (
+        <div className="loader">
+          <img src="img/loader.gif" alt="" />
+        </div>
+      )}
     </Slider>
   );
 }

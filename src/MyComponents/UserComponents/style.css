@@ -272,6 +272,7 @@
     width: 18%;
     border: 1px solid #EDEDED;
     border-radius: 16px;
+    margin-bottom: 14px;
     text-decoration: none;
 }
 
@@ -750,6 +751,7 @@
     margin: 20px 0px;
     align-items: center;
     justify-content: space-around;
+    overflow-x: auto;
 }
 
 .NameImageCatagory {
@@ -943,16 +945,17 @@
     color: #000000;
 }
 
-.subTotal{
+.subTotal {
     margin-top: 14px;
 }
 
-.subTotalOne{
+.subTotalOne {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.subTotalOne h2{
+
+.subTotalOne h2 {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -961,4 +964,393 @@
     margin: 6px 0px;
 }
 
+.loader {
+    width: 100%;
+    padding: 0px 100px;
+    height: 364px;
+}
 
+.loader img {
+    width: 100%;
+    height: 100%;
+}
+
+.mobilesearch {
+    display: none;
+}
+
+
+
+
+@media (max-width:1200px) {
+    .toptracking {
+        padding: 0px 60px;
+    }
+
+    .logoSearchHeader {
+        padding: 20px 60px;
+    }
+
+    .slider {
+        padding: 0px 60px;
+    }
+
+    .slider img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .flashsaleheading {
+        margin: 20px 60px;
+    }
+
+    .systemNavigation {
+        margin: 0px 60px;
+    }
+
+    .FullProductDescription {
+        margin: 20px 60px;
+    }
+
+
+    .flashsale {
+        padding: 20px 60px;
+    }
+
+    .topcatagories {
+        padding: 2px 60px;
+    }
+
+    .CatagoryNameImage {
+        padding: 10px 60px;
+    }
+
+    .catagoryName {
+        padding: 20px 60px;
+    }
+
+
+    .flashsaleone {
+        width: 23%;
+    }
+
+}
+
+@media (max-width:1001px) {
+    .recommendedProducts {
+        display: none;
+    }
+
+    .productDescHalf {
+        width: 100%;
+    }
+}
+
+@media (max-width:916px) {
+    .toptracking {
+        padding: 0px 40px;
+    }
+
+    .logoSearchHeader {
+        padding: 20px 40px;
+    }
+
+    .systemNavigation {
+        margin: 6px 40px;
+    }
+
+    .slider {
+        padding: 0px 40px;
+    }
+
+    .FullProductDescription {
+        margin: 20px 40px;
+    }
+
+    .slider img {
+        width: 100%;
+        height: 260px;
+    }
+
+    .flashsaleheading {
+        margin: 20px 40px;
+    }
+
+
+    .flashsale {
+        padding: 20px 40px;
+    }
+
+    .topcatagories {
+        padding: 2px 40px;
+    }
+
+    .CatagoryNameImage {
+        padding: 10px 40px;
+    }
+
+    .catagoryName {
+        padding: 20px 40px;
+    }
+
+    .flashsaleone {
+        width: 31%;
+    }
+
+
+
+}
+
+@media (max-width:800px) {
+    .toptracking {
+        padding: 0px 30px;
+    }
+
+    .logoSearchHeader {
+        padding: 20px 30px;
+    }
+
+    .slider {
+        padding: 0px 30px;
+    }
+
+    .systemNavigation {
+        margin: 6px 30px;
+    }
+
+    .FullProductDescription {
+        margin: 20px 30px;
+    }
+
+    .slider img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .flashsaleheading {
+        margin: 20px 30px;
+    }
+
+
+    .flashsale {
+        padding: 20px 30px;
+    }
+
+    .topcatagories {
+        padding: 2px 30px;
+    }
+
+    .cart p {
+        display: none;
+    }
+
+    .CatagoryNameImage {
+        padding: 10px 30px;
+    }
+
+
+    .catagoryName {
+        padding: 20px 30px;
+    }
+
+    .flashsaleone {
+        width: 31%;
+    }
+
+
+
+}
+
+
+@media (max-width:650px) {
+    .flashsaleone {
+        width: 48%;
+    }
+
+    .toptracking {
+        display: none;
+    }
+
+
+    .searchbar {
+        display: none;
+    }
+
+    .catagoryName {
+        display: none;
+    }
+
+    .logoSearchHeader {
+        padding: 10px 30px;
+    }
+
+    .menuName img {
+        width: 46px;
+        height: 46px;
+    }
+
+    .slider {
+        padding: 0px 0px;
+    }
+
+    .slider img {
+        width: 100%;
+        height: 200px;
+        border-radius: 0px;
+    }
+
+    .mobilesearch {
+        margin-top: 6px;
+        display: block;
+    }
+
+    .flashsaleheading {
+        margin: 6px 30px;
+    }
+
+    .descriptionBoxOne {
+        width: 100%;
+        margin: 0px;
+    }
+
+
+    .inideproductDescHalf {
+        display: block;
+    }
+
+    .productImage {
+        width: 100%;
+    }
+
+    .productImageOne img {
+        height: 300px;
+    }
+
+    .productdescription {
+        width: 100%;
+        margin-left: 0%;
+        padding: 0px 0px;
+    }
+}
+
+@media (max-width:456px) {
+    .flashsaleimg {
+        height: 160px;
+    }
+
+    .flashsaleone h2 {
+        font-size: 14px;
+    }
+
+    .flashsaleprice h3 {
+        font-weight: 500;
+        font-size: 14px;
+
+    }
+
+    .flashsaleprice h4 {
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .flashsaleone h5 {
+        font-weight: 400;
+        font-size: 13px;
+    }
+
+    .flashsaleheading h3 {
+        display: none;
+    }
+
+    .logoSearchHeader {
+        padding: 10px 20px;
+    }
+
+    .flashsaleheading {
+        margin: 10px 20px;
+    }
+
+    .systemNavigation {
+        margin: 6px 20px;
+    }
+
+    .FullProductDescription {
+        margin: 20px 20px;
+    }
+
+    .flashsale {
+        padding: 20px 20px;
+    }
+
+    .topcatagories {
+        padding: 2px 20px;
+    }
+
+    .CatagoryNameImage {
+        padding: 10px 20px;
+    }
+
+    .catagoryName {
+        padding: 20px 20px;
+    }
+}
+
+
+@media (max-width:400px) {
+    .flashsaleimg {
+        height: 140px;
+    }
+
+    .flashsaleone h2 {
+        font-size: 13px;
+    }
+
+    .flashsaleprice h3 {
+        font-weight: 500;
+        font-size: 13px;
+
+    }
+
+    .flashsaleprice h4 {
+        font-weight: 500;
+        font-size: 10px;
+    }
+
+    .flashsaleone h5 {
+        font-weight: 400;
+        font-size: 10px;
+    }
+
+    .logoSearchHeader {
+        padding: 10px 10px;
+    }
+
+    .systemNavigation {
+        margin: 6px 10px;
+    }
+
+    .flashsaleheading {
+        margin: 6px 10px;
+    }
+
+
+    .flashsale {
+        padding: 20px 10px;
+    }
+
+    .topcatagories {
+        padding: 2px 10px;
+    }
+
+    .FullProductDescription {
+        margin: 20px 10px;
+    }
+
+    .CatagoryNameImage {
+        padding: 10px 10px;
+    }
+
+    .catagoryName {
+        padding: 20px 10px;
+    }
+}

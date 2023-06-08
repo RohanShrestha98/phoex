@@ -2,7 +2,12 @@ import "./App.css";
 import AddPost from "./MyComponents/AdminComponents/AddPost";
 import CatagoryA from "./MyComponents/CatagoryA";
 import FetchPost from "./MyComponents/FetchPost";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import SearchBar from "./MyComponents/SearchBar";
 import AddHomeSlider from "./MyComponents/AdminComponents/AddHomeSlider";
 import AddFlashSale from "./MyComponents/AdminComponents/AddFlashSale";
@@ -42,13 +47,25 @@ function App() {
     };
   }, []);
 
- 
+  const [login, setLogin] = useState(false);
+  const [loginData, setLoginData] = useState([]);
+
+  useEffect(() => {
+    const storedLoginData = localStorage.getItem("login");
+    if (storedLoginData) {
+      const parsedLoginData = JSON.parse(storedLoginData);
+      setLoginData(parsedLoginData);
+      setLogin(true);
+    }
+  }, []);
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={login ? <Home /> : <Login />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/addpost" element={<AddPost />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/addhomeslider" element={<AddHomeSlider />} />
         <Route path="/yourcart" element={<CartPage />} />
         <Route path="/yourorder" element={<OrderedPage />} />
@@ -58,8 +75,11 @@ function App() {
         <Route path="/fetchpost" element={<FetchPost />} />
         {data.map((items) => (
           <>
-          <Route path={`${items.category}/${items.id}`} element={<ProductDescription data={items}/>} />
-          <Route path={`/${items.category}`} element={<ProductCatagory/>}/>
+            <Route
+              path={`${items.category}/${items.id}`}
+              element={<ProductDescription data={items} />}
+            />
+            <Route path={`/${items.category}`} element={<ProductCatagory />} />
           </>
         ))}
         <Route path="/fetchpostcatagorya" element={<CatagoryA />} />

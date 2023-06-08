@@ -67,6 +67,18 @@ export default function Header() {
   const handleScrollToTop = () => {
     window.scrollTo(0, 0);
   };
+  const [login, setLogin] = useState(false);
+  const [loginData, setLoginData] = useState([]);
+
+  useEffect(() => {
+    const storedLoginData = localStorage.getItem("login");
+    if (storedLoginData) {
+      const parsedLoginData = JSON.parse(storedLoginData);
+      setLoginData(parsedLoginData);
+      setLogin(true);
+    }
+  }, []);
+
   return (
     <>
       {sidebar && (
@@ -133,11 +145,10 @@ export default function Header() {
         <div className="registerCart">
           <Link className="cart mobilesearch">
             <img src="/icons/Search.png" alt="" />
-            <p>Sign Up/Sign In</p>
           </Link>
           <Link className="cart">
             <img src="/icons/Profile.png" alt="" />
-            <p>Sign Up/Sign In</p>
+            {login ? <p>{loginData.name}</p> : <p>Sign Up/Sign In</p>}
           </Link>
 
           <div onClick={() => setCartBar(true)} className="cart">
